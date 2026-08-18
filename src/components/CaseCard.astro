@@ -1,0 +1,18 @@
+---
+import type { CaseStudy } from '../data/cases';
+
+interface Props {
+  c: CaseStudy;
+}
+const { c } = Astro.props;
+---
+<article class="card card-glow case-card">
+  <div class="case-top"><span class="id">{c.id}</span><span class="sector" data-en={c.sector.en} data-fr={c.sector.fr}>{c.sector.en}</span></div>
+  <h3 data-en={c.title.en} data-fr={c.title.fr}>{c.title.en}</h3>
+  <p data-en={c.text.en} data-fr={c.text.fr}>{c.text.en}</p>
+  <div class="case-tags">
+    {c.tags.map((t) => (
+      <span class={`tag${t.variant ? ` tag-${t.variant}` : ''}`} data-en={t.en} data-fr={t.fr}>{t.en}</span>
+    ))}
+  </div>
+</article>

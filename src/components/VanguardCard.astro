@@ -1,0 +1,144 @@
+<!-- Vanguard — LLM Privacy Gateway -->
+<article class="card card-glow b-item c12" data-reveal>
+  <div class="vanguard-grid">
+    <div>
+      <div class="b-head">
+        <span class="id">03 / VANGUARD</span>
+        <span class="kind">LLM PRIVACY GATEWAY</span>
+      </div>
+      <h3 data-en="Real-time sensitive data masking for LLMs." data-fr="Masquage des données sensibles en temps réel pour LLM.">Real-time sensitive data masking for LLMs.</h3>
+      <p class="b-text" data-en="A high-performance proxy that redacts confidential credentials, API keys, e-mails and personal identifiers before prompt dispatch — and seamlessly restores them into the model's response stream." data-fr="Un proxy haute performance qui masque identifiants confidentiels, clés API, e-mails et données personnelles avant l'envoi du prompt — puis les restitue transparentement dans le flux de réponse du modèle.">
+        A high-performance proxy that redacts confidential credentials, API keys, e-mails and personal identifiers before prompt dispatch — and seamlessly restores them into the model's response stream.
+      </p>
+
+      <div class="filters">
+        <span class="filters-label"><span data-en="Active sanitization filters" data-fr="Filtres de nettoyage actifs">Active sanitization filters</span><b data-en="ENFORCED" data-fr="ACTIFS">ENFORCED</b></span>
+        <label class="filter"><input type="checkbox" id="toggleKey" checked><span class="box"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span data-en="API keys &amp; tokens" data-fr="Clés API &amp; tokens">API keys &amp; tokens</span></label>
+        <label class="filter"><input type="checkbox" id="toggleEmail" checked><span class="box"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span data-en="E-mail addresses" data-fr="Adresses e-mail">E-mail addresses</span></label>
+        <label class="filter"><input type="checkbox" id="toggleIP" checked><span class="box"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span data-en="IP addresses" data-fr="Adresses IP">IP addresses</span></label>
+        <label class="filter"><input type="checkbox" id="toggleSec" checked><span class="box"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span><span data-en="SSN &amp; identifiers" data-fr="NIR &amp; identifiants">SSN &amp; identifiers</span></label>
+      </div>
+    </div>
+
+    <div class="term">
+      <div class="term-bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>vanguard-proxy // live-sanitizer</span>
+        <span class="stream"><i aria-hidden="true"></i>STREAM ACTIVE</span>
+      </div>
+      <div class="term-body">
+        <div>
+          <label>
+            <span data-en="User input prompt (client-side)" data-fr="Prompt utilisateur (côté client)">User input prompt (client-side)</span>
+            <button class="reset" type="button" id="vanguardReset" data-en="Reset sample" data-fr="Réinitialiser">Reset sample</button>
+          </label>
+          <input class="term-input" type="text" id="vanguardInput" spellcheck="false"
+                 aria-label="Demo prompt input"
+                 value="Send audit log to sec-team@corporate-domain.com using API key sk_live_88192341 from IP 192.168.1.45">
+        </div>
+        <div>
+          <label><span data-en="Outbound payload sent to external LLM API" data-fr="Charge envoyée à l'API LLM externe">Outbound payload sent to external LLM API</span></label>
+          <div class="term-out" id="vanguardOutput" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style is:global>
+/* ---------- Terminal (Vanguard) ---------- */
+.term{
+  background:var(--scope-bg);border:1px solid var(--scope-line);border-radius:1rem;overflow:hidden;
+  font-family:var(--font-mono);font-size:.78rem;box-shadow:var(--shadow);
+}
+.term-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.1rem;border-bottom:1px solid var(--scope-line);
+  font-size:.64rem;letter-spacing:.1em;color:#8a7f70;
+}
+.term-bar .dots{display:flex;gap:.45rem}
+.term-bar .dots i{width:.6rem;height:.6rem;border-radius:50%;background:#3a322a}
+.term-bar .stream{display:inline-flex;align-items:center;gap:.45rem;color:var(--scope-signal);font-weight:600;font-size:.6rem}
+.term-bar .stream i{width:6px;height:6px;border-radius:50%;background:var(--scope-signal);animation:softPulse 1.8s ease-in-out infinite}
+.term-body{padding:1.1rem;display:flex;flex-direction:column;gap:.9rem}
+.term-body label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#8a7f70;display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.45rem}
+.term-body label .reset{color:var(--carmin-ink);font-size:.6rem;letter-spacing:.06em;text-transform:none;cursor:pointer;font-family:var(--font-mono)}
+.term-body label .reset:hover{text-decoration:underline}
+.term-input{
+  width:100%;background:#1c1712;border:1px solid var(--scope-line);border-radius:.6rem;
+  padding:.75rem .85rem;color:#e8dfd0;font-family:var(--font-mono);font-size:.76rem;
+  transition:border-color .25s;
+}
+.term-input:focus{outline:none;border-color:color-mix(in srgb,var(--carmin) 60%,#5a3a34)}
+.term-out{
+  background:#1c1712;border:1px solid var(--scope-line);border-radius:.6rem;
+  padding:.75rem .85rem;color:#b5a996;line-height:1.7;min-height:3.2rem;overflow-wrap:anywhere;
+}
+.redact{
+  display:inline-block;background:color-mix(in srgb,var(--carmin) 18%,transparent);
+  color:#ff5470;border:1px solid color-mix(in srgb,var(--carmin) 45%,transparent);
+  border-radius:.3rem;padding:0 .35rem;font-weight:600;font-size:.7rem;white-space:nowrap;
+}
+/* Vanguard filter pills */
+.filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin-top:1.4rem}
+.filters-label{grid-column:1/-1;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.15rem}
+.filters-label b{color:var(--signal);font-weight:600}
+.filter{
+  position:relative;display:flex;align-items:center;gap:.6rem;cursor:pointer;user-select:none;
+  border:1px solid var(--line);border-radius:.65rem;padding:.6rem .8rem;
+  font-family:var(--font-mono);font-size:.7rem;color:var(--ink-2);
+  transition:border-color .25s,background-color .25s,color .25s;
+}
+.filter:hover{border-color:var(--line-2);color:var(--ink)}
+.filter input{position:absolute;opacity:0;pointer-events:none}
+.filter .box{
+  width:1rem;height:1rem;border-radius:.35rem;border:1.5px solid var(--line-2);flex:none;
+  display:grid;place-items:center;transition:background-color .2s,border-color .2s;
+}
+.filter .box svg{width:.62rem;height:.62rem;color:#fdf9f1;opacity:0;transition:opacity .15s}
+.filter input:checked~.box{background:var(--carmin);border-color:var(--carmin)}
+.filter input:checked~.box svg{opacity:1}
+.filter input:focus-visible~.box{outline:2px solid var(--carmin);outline-offset:2px}
+.vanguard-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,4vw,3rem);align-items:center}
+
+@media (max-width:860px){
+  .vanguard-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .filters{grid-template-columns:1fr}
+}
+</style>
+
+<script>
+/* ---------- Vanguard demo (XSS-safe: escape before inject) ---------- */
+var vInput = document.getElementById("vanguardInput");
+var vOutput = document.getElementById("vanguardOutput");
+var VANGUARD_SAMPLE = "Send audit log to sec-team@corporate-domain.com using API key sk_live_88192341 from IP 192.168.1.45";
+function escapeHTML(s){
+  return s.replace(/[&<>"']/g, function(c){
+    return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+  });
+}
+function runVanguardDemo(){
+  var out = escapeHTML(vInput.value);
+  var on = function(id){
+    var el = document.getElementById(id);
+    return el ? el.checked : true;
+  };
+  if (on("toggleKey"))   out = out.replace(/sk_[a-zA-Z0-9_]+/g, '<span class="redact">[REDACTED_API_KEY]</span>');
+  if (on("toggleEmail")) out = out.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '<span class="redact">[REDACTED_EMAIL]</span>');
+  if (on("toggleIP"))    out = out.replace(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g, '<span class="redact">[REDACTED_IP]</span>');
+  if (on("toggleSec"))   out = out.replace(/\b\d{3}-\d{2}-\d{4}\b/g, '<span class="redact">[REDACTED_IDENTIFIER]</span>');
+  vOutput.innerHTML = out || '<span style="color:#6b6154">…</span>';
+}
+vInput.addEventListener("input", runVanguardDemo);
+["toggleKey", "toggleEmail", "toggleIP", "toggleSec"].forEach(function(id){
+  var el = document.getElementById(id);
+  if (el) el.addEventListener("change", runVanguardDemo);
+});
+document.getElementById("vanguardReset").addEventListener("click", function(){
+  vInput.value = VANGUARD_SAMPLE;
+  runVanguardDemo();
+});
+runVanguardDemo();
+</script>

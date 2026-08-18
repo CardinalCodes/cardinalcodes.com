@@ -1,0 +1,70 @@
+<!-- MSP banner -->
+<div class="msp c12" data-reveal>
+  <div class="msp-inner">
+    <div>
+      <p class="kicker" data-en="MSP Partner &amp; Distributor Program" data-fr="Programme partenaires &amp; distributeurs MSP">MSP Partner &amp; Distributor Program</p>
+      <h3 data-en="Multi-tenant governance &amp; volume licensing for MSPs." data-fr="Gouvernance multi-tenant &amp; licences volume pour MSP.">Multi-tenant governance &amp; volume licensing for MSPs.</h3>
+      <p data-en="Deliver turnkey security visibility and LLM privacy control to your entire client portfolio through a unified MSP control plane — with tiered volume discounts, automated API provisioning and dedicated onboarding." data-fr="Proposez visibilité cyber et protection des données IA à l'ensemble de vos clients via une console MSP unifiée — avec tarifs préférentiels en volume, provisionnement API automatisé et accompagnement dédié.">
+        Deliver turnkey security visibility and LLM privacy control to your entire client portfolio through a unified MSP control plane — with tiered volume discounts, automated API provisioning and dedicated onboarding.
+      </p>
+      <div class="msp-metrics">
+        <div class="metric"><small>Architecture</small><strong>Multi-Tenant</strong></div>
+        <div class="metric"><small>Provisioning</small><strong class="is-signal">Automated API</strong></div>
+        <div class="metric"><small>Reporting</small><strong>White-Label</strong></div>
+        <div class="metric"><small data-en="Pricing model" data-fr="Modèle tarifaire">Pricing model</small><strong class="is-carmin" data-en="Tiered volume" data-fr="Volume par paliers">Tiered volume</strong></div>
+      </div>
+    </div>
+    <div class="msp-cta">
+      <p class="ask" data-en="Ready to expand your managed services?" data-fr="Prêt à développer vos services gérés ?">Ready to expand your managed services?</p>
+      <p class="sub" data-en="Contact our team for a tailored demo and a volume quote." data-fr="Contactez notre équipe pour une démonstration et un devis personnalisé.">Contact our team for a tailored demo and a volume quote.</p>
+      <a class="btn btn-solid" href="mailto:contact@cardinalcodes.com?subject=Range%20Zero%20MSP%20Partner%20Inquiry">
+        <span data-en="Request MSP demo" data-fr="Demander une démo MSP">Request MSP demo</span>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0-7 7m7-7H3"/></svg>
+      </a>
+      <a class="btn btn-ghost-light" href="https://range-zero.com" target="_blank" rel="noopener noreferrer">
+        range-zero.com
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+/* ---------- MSP banner ---------- */
+.msp{
+  position:relative;overflow:hidden;border-radius:1.3rem;
+  background:linear-gradient(135deg,#211a13,#141017 55%,#1c1114);
+  border:1px solid #322921;color:#ede7db;
+}
+.msp::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(520px 300px at 88% 0%,color-mix(in srgb,var(--carmin) 22%,transparent),transparent 65%);
+}
+.msp-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:clamp(1.8rem,4vw,3.2rem);align-items:center;padding:clamp(1.8rem,4vw,2.8rem)}
+.msp .kicker{color:#ff5470}
+.msp .kicker::before{background:#ff5470}
+.msp h3{font-size:clamp(1.4rem,2.6vw,1.9rem);margin:.7rem 0 .8rem;color:#fdf9f1}
+.msp p{font-size:.88rem;color:#b5a996;line-height:1.68;max-width:38rem}
+.msp-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-top:1.5rem}
+.msp-metrics .metric{border-color:#322921;background:rgb(255 255 255 / .03)}
+.msp-metrics .metric small{color:#8a7f70}
+.msp-metrics .metric strong{color:#fdf9f1}
+.msp-metrics .metric strong.is-carmin{color:#ff5470}
+.msp-metrics .metric strong.is-signal{color:var(--scope-signal)}
+.msp-cta{
+  display:flex;flex-direction:column;gap:.7rem;
+  background:rgb(10 8 7 / .55);border:1px solid #322921;border-radius:1rem;padding:1.5rem;
+}
+.msp-cta .ask{font-family:var(--font-mono);font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fdf9f1;text-align:center}
+.msp-cta .sub{font-size:.72rem;color:#8a7f70;text-align:center;line-height:1.55}
+.msp-cta .btn{justify-content:center}
+.btn-ghost-light{border:1px solid #3a322a;color:#d9cfc0}
+.btn-ghost-light:hover{border-color:#5a4f42;background:rgb(255 255 255 / .04)}
+
+@media (max-width:860px){
+  .msp-inner{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .msp-metrics{grid-template-columns:repeat(2,1fr)}
+}
+</style>

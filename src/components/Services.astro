@@ -1,0 +1,55 @@
+---
+import { services } from '../data/services';
+---
+<!-- ============ SERVICES ============ -->
+<section id="advisory" class="services" aria-labelledby="advisoryTitle">
+  <div class="container">
+
+    <div class="sec-head" data-reveal>
+      <div>
+        <p class="kicker" data-en="// Consulting &amp; Systems" data-fr="// Conseil &amp; systèmes">// Consulting &amp; Systems</p>
+        <h2 class="sec-title" id="advisoryTitle" data-en="Engineering &amp; advisory, hands on the metal." data-fr="Ingénierie &amp; conseil, les mains sur le métal.">Engineering &amp; advisory, hands on the metal.</h2>
+      </div>
+      <p class="lede" data-en="Hands-on architectural advisory, cost optimization and crisis engineering for high-assurance systems." data-fr="Conseil d'architecture opérationnel, optimisation des coûts et ingénierie de crise pour environnements à haute exigence.">
+        Hands-on architectural advisory, cost optimization and crisis engineering for high-assurance systems.
+      </p>
+    </div>
+
+    <div class="grid-4">
+      {services.map((s, i) => (
+        <article class="card card-glow service" data-reveal style={i ? `--d:${i * 0.08}s` : undefined}>
+          <div class="icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={s.icon}/></svg></div>
+          <p class="idx">{s.idx}</p>
+          <h3 data-en={s.title.en} data-fr={s.title.fr}>{s.title.en}</h3>
+          <p data-en={s.text.en} data-fr={s.text.fr}>{s.text.en}</p>
+          <div class="foot"><span class={`tag${s.tag.variant ? ` tag-${s.tag.variant}` : ''}`} data-en={s.tag.en} data-fr={s.tag.fr}>{s.tag.en}</span></div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style is:global>
+/* ---------- Services ---------- */
+.services{background:color-mix(in srgb,var(--sunken) 55%,var(--bg));border-block:1px solid var(--line)}
+.services .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+.service{padding:1.7rem 1.6rem;display:flex;flex-direction:column}
+.service .icon{
+  width:2.6rem;height:2.6rem;border-radius:.7rem;border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--carmin-ink);margin-bottom:1.3rem;
+  background:color-mix(in srgb,var(--carmin) 6%,transparent);
+}
+.service .icon svg{width:1.15rem;height:1.15rem}
+.service .idx{font-family:var(--font-mono);font-size:.6rem;color:var(--ink-3);letter-spacing:.2em;margin-bottom:.4rem}
+.service h3{font-size:1.12rem;margin-bottom:.6rem}
+.service p{font-size:.82rem;color:var(--ink-2);line-height:1.65;flex:1}
+.service .foot{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--line)}
+
+@media (max-width:1020px){
+  .services .grid-4{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .services .grid-4{grid-template-columns:1fr}
+}
+</style>

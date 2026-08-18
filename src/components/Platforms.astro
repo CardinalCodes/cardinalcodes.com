@@ -1,0 +1,32 @@
+---
+import AtlasCard from './AtlasCard.astro';
+import PaladinCard from './PaladinCard.astro';
+import VanguardCard from './VanguardCard.astro';
+import MspBanner from './MspBanner.astro';
+---
+<!-- ============ RANGE ZERO / PLATFORMS ============ -->
+<section id="platforms" aria-labelledby="platformsTitle">
+  <div class="container">
+
+    <div class="sec-head" data-reveal>
+      <div>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+          <span class="kicker" data-en="Range Zero — Suite" data-fr="Range Zero — Suite">Range Zero — Suite</span>
+          <span class="tag tag-signal" style="display:inline-flex;align-items:center;gap:.45rem"><span class="pulse-dot" style="width:6px;height:6px" aria-hidden="true"></span><span data-en="Active platform" data-fr="Plateforme active">Active platform</span></span>
+        </div>
+        <h2 class="sec-title" id="platformsTitle" data-en="Attack surface &amp; AI privacy, under one watch." data-fr="Surface d'attaque &amp; confidentialité IA, sous une même vigilance.">Attack surface &amp; AI privacy, under one watch.</h2>
+      </div>
+      <p class="lede" data-en="A unified EASM, AI privacy proxy and security training platform, built for MSPs, enterprise teams and infrastructure managers." data-fr="Plateforme unifiée d'EASM, proxy de confidentialité IA et formation sécurité, conçue pour les MSP, équipes d'entreprise et responsables d'infrastructure.">
+        A unified EASM, AI privacy proxy and security training platform, built for MSPs, enterprise teams and infrastructure managers.
+      </p>
+    </div>
+
+    <div class="bento">
+      <AtlasCard />
+      <PaladinCard />
+      <VanguardCard />
+      <MspBanner />
+    </div>
+
+  </div>
+</section>

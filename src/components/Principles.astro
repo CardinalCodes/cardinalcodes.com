@@ -1,0 +1,34 @@
+---
+import { principles } from '../data/principles';
+---
+<!-- ============ PRINCIPLES ============ -->
+<section class="principles" aria-label="Operating principles">
+  <div class="container">
+    <div class="grid-3">
+      {principles.map((p, i) => (
+        <article class="card card-glow principle" data-reveal style={i ? `--d:${i / 10}s` : undefined}>
+          <div class="num">{p.num}</div>
+          <h3 data-en={p.title.en} data-fr={p.title.fr}>{p.title.en}</h3>
+          <p data-en={p.text.en} data-fr={p.text.fr}>{p.text.en}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+/* ---------- Principles ---------- */
+.principles{border-block:1px solid var(--line);background:color-mix(in srgb,var(--sunken) 55%,var(--bg))}
+.principles .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.principle{padding:1.8rem 1.7rem}
+.principle .num{
+  font-family:var(--font-serif);font-style:italic;font-size:2.3rem;line-height:1;
+  color:color-mix(in srgb,var(--carmin) 65%,var(--ink));margin-bottom:1.1rem;
+}
+.principle h3{font-size:1.18rem;margin-bottom:.6rem}
+.principle p{font-size:.85rem;color:var(--ink-2);line-height:1.65}
+
+@media (max-width:860px){
+  .principles .grid-3{grid-template-columns:1fr}
+}
+</style>

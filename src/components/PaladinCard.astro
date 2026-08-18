@@ -1,0 +1,94 @@
+<!-- Paladin — Security awareness -->
+<article class="card card-glow b-item c5" data-reveal style="--d:.1s">
+  <div>
+    <div class="b-head">
+      <span class="id">02 / PALADIN</span>
+      <span class="tag tag-signal">ADAPTIVE</span>
+    </div>
+    <h3 data-en="Security awareness that actually sticks." data-fr="Une culture sécurité qui s'installe durablement.">Security awareness that actually sticks.</h3>
+    <p class="b-text" data-en="Paladin builds team resilience through contextual micro-learning modules and benign phishing simulations, designed to empower non-technical users." data-fr="Paladin renforce la résilience de vos équipes grâce à des micro-modules contextualisés et des simulations de phishing bénignes, pensés pour les profils non techniques.">
+      Paladin builds team resilience through contextual micro-learning modules and benign phishing simulations, designed to empower non-technical users.
+    </p>
+  </div>
+
+  <div class="gauge-box" data-gauge="94.8">
+    <div class="gauge-head">
+      <span data-en="Team resilience index" data-fr="Indice de résilience équipe">Team resilience index</span>
+      <strong><span data-count="94.8" data-decimals="1">0</span><small>%</small></strong>
+    </div>
+    <div class="gauge-bar"><i></i></div>
+    <div class="gauge-foot">
+      <span data-en="Phishing resilience: High" data-fr="Résilience phishing : élevée">Phishing resilience: High</span>
+      <b>+13.8% MoM</b>
+    </div>
+  </div>
+</article>
+
+<style is:global>
+/* ---------- Gauge (Paladin) ---------- */
+.gauge-box{border:1px solid var(--line);border-radius:1rem;padding:1.3rem 1.4rem;background:color-mix(in srgb,var(--ink) 2.5%,transparent)}
+.gauge-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:.7rem;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.gauge-head strong{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--signal);letter-spacing:0}
+.gauge-head strong small{font-size:.9rem;color:var(--ink-3);font-weight:500}
+.gauge-bar{height:8px;border-radius:99px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden}
+.gauge-bar i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,color-mix(in srgb,var(--signal) 60%,var(--ink)),var(--signal));transition:width 1.4s var(--ease-out)}
+.gauge-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;padding-top:.85rem;border-top:1px dashed var(--line-2);font-family:var(--font-mono);font-size:.62rem;color:var(--ink-3)}
+.gauge-foot b{color:var(--signal);font-weight:600}
+
+@media (prefers-reduced-motion:reduce){
+  .gauge-bar i{transition:none}
+}
+</style>
+
+<script>
+/* ---------- Counters + gauge fill ---------- */
+var reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function animateCounter(el){
+  var target = parseFloat(el.getAttribute("data-count"));
+  var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+  if (reducedMotion){ el.textContent = target.toFixed(decimals); return; }
+  var t0 = null, dur = 1400;
+  function frame(t){
+    if (!t0) t0 = t;
+    var p = Math.min((t - t0) / dur, 1);
+    var eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = (target * eased).toFixed(decimals);
+    if (p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+var counters = document.querySelectorAll("[data-count]");
+if ("IntersectionObserver" in window){
+  var countIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        animateCounter(entry.target);
+        countIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  counters.forEach(function(el){ countIO.observe(el); });
+} else {
+  counters.forEach(animateCounter);
+}
+
+var gauges = document.querySelectorAll("[data-gauge]");
+if ("IntersectionObserver" in window){
+  var gaugeIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        var bar = entry.target.querySelector(".gauge-bar i");
+        if (bar) bar.style.width = entry.target.getAttribute("data-gauge") + "%";
+        gaugeIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  gauges.forEach(function(g){ gaugeIO.observe(g); });
+} else {
+  gauges.forEach(function(g){
+    var bar = g.querySelector(".gauge-bar i");
+    if (bar) bar.style.width = g.getAttribute("data-gauge") + "%";
+  });
+}
+</script>

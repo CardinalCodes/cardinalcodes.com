@@ -1,0 +1,95 @@
+<!-- Atlas — External Attack Surface Monitoring -->
+<article class="card card-glow b-item c7" data-reveal>
+  <div>
+    <div class="b-head">
+      <span class="id">01 / ATLAS</span>
+      <span class="kind" data-en="External Attack Surface Monitoring" data-fr="Surveillance de surface d'attaque externe">External Attack Surface Monitoring</span>
+    </div>
+    <h3 data-en="Automated visibility over your external infrastructure." data-fr="Visibilité automatisée sur votre infrastructure externe.">Automated visibility over your external infrastructure.</h3>
+    <p class="b-text" data-en="Continuous monitoring of external digital assets. Atlas ingests domains or IP ranges and automatically discovers subdomains, open ports, SSL health and configuration drift — in real time." data-fr="Surveillance continue des actifs externes. Atlas analyse vos domaines et plages IP pour détecter automatiquement sous-domaines, ports ouverts, dérives SSL et changements de configuration — en temps réel.">
+      Continuous monitoring of external digital assets. Atlas ingests domains or IP ranges and automatically discovers subdomains, open ports, SSL health and configuration drift — in real time.
+    </p>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><small data-en="Monitored assets" data-fr="Actifs surveillés">Monitored assets</small><strong data-en="Continuous scan" data-fr="Scan continu">Continuous scan</strong></div>
+    <div class="metric"><small>SSL &amp; DNS drift</small><strong class="is-signal" data-en="Real-time alert" data-fr="Alerte temps réel">Real-time alert</strong></div>
+    <div class="metric"><small data-en="Port discovery" data-fr="Découverte de ports">Port discovery</small><strong class="is-carmin" data-en="Auto-inventory" data-fr="Inventaire auto">Auto-inventory</strong></div>
+  </div>
+
+  <div class="scope">
+    <span class="scope-badge"><i aria-hidden="true"></i>ACTIVE&nbsp;MESH</span>
+    <svg viewBox="0 0 400 218" role="img" aria-label="Animated network topology: one core gateway connected to four monitored nodes">
+      <defs>
+        <pattern id="scopeGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="1" fill="#241e18"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="218" fill="url(#scopeGrid)"/>
+      <path class="tlink on" d="M200 112 C 150 112 120 58 78 58"/>
+      <path class="tlink" d="M200 112 C 150 112 120 162 74 162"/>
+      <path class="tlink" d="M200 112 C 250 112 280 62 322 62"/>
+      <path class="tlink on" d="M200 112 C 250 112 280 160 320 160"/>
+      <g class="tnode core">
+        <circle class="nping" cx="200" cy="112" r="14" fill="none" stroke="#c8102e" stroke-width="1.2" opacity=".7"/>
+        <circle class="dot" cx="200" cy="112" r="6"/>
+        <text x="200" y="92">core.gateway</text>
+      </g>
+      <g class="tnode">
+        <circle class="dot sig" cx="78" cy="58" r="4"/>
+        <text x="78" y="42">dns.primary</text>
+      </g>
+      <g class="tnode">
+        <circle class="dot" cx="74" cy="162" r="4"/>
+        <text x="74" y="182">db.master</text>
+      </g>
+      <g class="tnode">
+        <circle class="dot" cx="322" cy="62" r="4"/>
+        <text x="322" y="46">app.cluster</text>
+      </g>
+      <g class="tnode">
+        <circle class="dot sig" cx="320" cy="160" r="4"/>
+        <text x="320" y="180">vault.sec</text>
+      </g>
+    </svg>
+    <div class="scope-chrome">
+      <span data-en="Network topology" data-fr="Topologie réseau">Network topology</span>
+      <span class="live"><i aria-hidden="true"></i>5 NODES ONLINE</span>
+    </div>
+  </div>
+</article>
+
+<style is:global>
+/* ---------- Scope — always-dark instrument panel (Atlas) ---------- */
+.scope{
+  position:relative;border-radius:1rem;overflow:hidden;
+  background:var(--scope-bg);border:1px solid var(--scope-line);
+  padding:1rem;display:flex;flex-direction:column;gap:.7rem;
+}
+.scope svg{width:100%;height:auto}
+.scope-chrome{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#8a7f70;border-top:1px solid var(--scope-line);padding-top:.7rem;
+}
+.scope-chrome .live{display:inline-flex;align-items:center;gap:.45rem;color:var(--scope-signal);font-weight:600}
+.scope-chrome .live i{width:6px;height:6px;border-radius:50%;background:var(--scope-signal);animation:softPulse 1.8s ease-in-out infinite}
+.scope-badge{
+  position:absolute;top:.8rem;right:.8rem;z-index:2;
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--font-mono);font-size:.56rem;font-weight:600;letter-spacing:.16em;
+  color:#cbbfae;border:1px solid var(--scope-line);border-radius:99px;padding:.3rem .65rem;
+  background:color-mix(in srgb,var(--scope-bg) 80%,transparent);backdrop-filter:blur(4px);
+}
+.scope-badge i{width:6px;height:6px;border-radius:50%;background:var(--scope-signal);animation:softPulse 1.8s ease-in-out infinite}
+.tlink{fill:none;stroke:#3a322a;stroke-width:1.3;stroke-dasharray:3 9;animation:dashflow 16s linear infinite}
+.tlink.on{stroke:var(--scope-signal);stroke-width:1.7;animation-duration:7s}
+@keyframes dashflow{to{stroke-dashoffset:-120}}
+.tnode circle.dot{fill:#8a7f70}
+.tnode circle.dot.sig{fill:var(--scope-signal)}
+.tnode text{font-family:var(--font-mono);font-size:8px;fill:#8a7f70;text-anchor:middle}
+.tnode.core circle.dot{fill:var(--carmin)}
+.tnode.core text{fill:#d9cfc0}
+.nping{transform-box:fill-box;transform-origin:center;animation:nping 2.6s cubic-bezier(0,0,.2,1) infinite}
+@keyframes nping{0%{transform:scale(.35);opacity:.75}75%,100%{transform:scale(2.5);opacity:0}}
+</style>

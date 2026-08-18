@@ -1,0 +1,62 @@
+---
+import '@fontsource/instrument-serif/latin-400.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '@fontsource/instrument-sans/latin-400.css';
+import '@fontsource/instrument-sans/latin-500.css';
+import '@fontsource/instrument-sans/latin-600.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
+import '@fontsource/jetbrains-mono/latin-600.css';
+import '@fontsource/jetbrains-mono/latin-700.css';
+import '../styles/global.css';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Cardinal Codes',
+  url: 'https://cardinalcodes.com/',
+  email: 'contact@cardinalcodes.com',
+  slogan: 'Systems & AI Infrastructure Studio',
+  sameAs: ['https://github.com/cardinalcodes'],
+};
+---
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardinal Codes — Systems & AI Infrastructure Studio</title>
+<meta name="description" content="Cardinal Codes is a systems engineering studio: sovereign cloud platforms, on-premise AI pipelines, zero-trust infrastructure. Home of the Range Zero security suite.">
+<link rel="canonical" href="https://cardinalcodes.com/">
+<meta name="theme-color" content="#f6f2ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f0d0b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cardinal Codes">
+<meta property="og:title" content="Cardinal Codes — Systems & AI Infrastructure Studio">
+<meta property="og:description" content="Sovereign cloud platforms, on-premise AI pipelines, zero-trust infrastructure. Home of the Range Zero security suite.">
+<meta property="og:url" content="https://cardinalcodes.com/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cardinal Codes — Systems & AI Infrastructure Studio">
+<meta name="twitter:description" content="Sovereign cloud platforms, on-premise AI pipelines, zero-trust infrastructure.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23c8102e'/%3E%3Cpath fill='%23fdf9f1' fill-rule='evenodd' d='M8 27 10 15 15 20 13 5 19 12 21 3 26 10 29 6 31 14 42 21 41 25 31 26 29 34 18 37 11 33Zm18.5-7a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4Z'/%3E%3C/svg%3E">
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<!-- Theme resolved before first paint: saved preference, else system scheme -->
+<script is:inline>
+(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-en="Skip to content" data-fr="Aller au contenu">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<slot />
+
+<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+<script src="../scripts/behaviors.js"></script>
+</body>
+</html>
